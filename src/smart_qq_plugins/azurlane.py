@@ -62,7 +62,13 @@ SHIP_EQUIPMENT_SELECTOR = "div.pverecommend1 .REt > span > a:nth-of-type(2)"
 # 别称/花名
 nickname_dict = {
 	"克爹": "克利夫兰",
-	"": ""
+	"爹": "克利夫兰",
+	"三叔": "蒙彼利埃",
+	"二叔": "哥伦比亚",
+	"金坷垃": "圣地亚哥",
+	"彩坷垃": "圣地亚哥",
+	"圣爹": "圣地亚哥",
+	"小姨子": "萨拉托加"
 }
 @on_group_message
 def ship(msg, bot):
@@ -77,6 +83,7 @@ def ship(msg, bot):
 		logger.info("RUNTIMELOG 查询舰娘...")
 		command = match1.group(1)
 		ship = match1.group(2)
+		ship = nickname_dict.get(ship, ship)
 		logger.info("RUNTIMELOG 查询舰娘语句: "+msg.content)
 		if command == six.text_type("船") or command == six.text_type("老婆") or command == six.text_type("舰娘"):
 			str_data = ""
