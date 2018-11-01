@@ -89,6 +89,7 @@ def ship(msg, bot):
 			str_data = ""
 			str_data = exctrace_ship(ship)
 			bot.reply_msg(msg, str_data)
+	return False
 
 
 @on_group_message
