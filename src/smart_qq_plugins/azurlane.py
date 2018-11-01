@@ -136,11 +136,7 @@ def exctrace_ship(ship=None):
 		logger.error(ex)
 		str_data = "请求失败 :("
 		return str_data
-	match = re.match(
-		six.text_type("本页面目前没有内容"),
-		response.text
-	)
-	if match:
+	if response.status_code == 404:
 		return "emmm这可能是颗卫星 :("
 	ship_type = extract_first_match(SHIP_TYPE_SELECTOR, soup)
 	ship_level = extract_first_match(SHIP_LEVEL_SELECTOR, soup)
