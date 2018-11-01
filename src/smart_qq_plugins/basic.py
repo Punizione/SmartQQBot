@@ -50,7 +50,7 @@ def repeat(msg, bot):
         msg.content
     )
     if len(recorder.msg_list) > 0 and recorder.msg_list[-1].content == msg.content and recorder.last_reply != msg.content:
-        if str(msg.content).strip() no in ("", " ", "[图片]", "[表情]"):
+        if str(msg.content).strip() not in ("", " ", "[图片]", "[表情]"):
             if not match1:
                 logger.info("RUNTIMELOG " + str(msg.group_code) + " repeating, trying to reply " + str(msg.content))
                 reply(msg.content)
