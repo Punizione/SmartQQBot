@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import random
-
+import six
+import re
 from smart_qq_bot.logger import logger
 from smart_qq_bot.signals import (
     on_all_message,
