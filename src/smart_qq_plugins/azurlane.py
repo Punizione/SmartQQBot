@@ -68,7 +68,52 @@ nickname_dict = {
 	"金坷垃": "圣地亚哥",
 	"彩坷垃": "圣地亚哥",
 	"圣爹": "圣地亚哥",
-	"小姨子": "萨拉托加"
+	"小姨子": "萨拉托加",
+	"吃撑": "赤城",
+	"加喝": "加贺",
+	"大狗": "爱宕",
+	"爱大狗": "爱宕",
+	"八万钢": "阿武隈",
+	"崩姐": "宾夕法尼亚",
+	"标日天": "标枪",
+	"波斯猫": "俾斯麦",
+	"BSM": "俾斯麦",
+	"北宅": "提尔比茨",
+	"吃手手": "欧根亲王",
+	"大尻峰": "大黄蜂",
+	"大哥": "威尔士亲王",
+	"河马": "俄克拉荷马",
+	"海妈": "海伦娜",
+	"花生": "华盛顿",
+	"花生炖": "华盛顿",
+	"花生豆": "华盛顿",
+	"举高高": "埃尔德里奇",
+	"举炮炮": "阿贝克隆比",
+	"加加": "萨拉托加",
+	"小加加": "萨拉托加",
+	"++": "萨拉托加",
+	"饺子": "埃塞克斯",
+	"老奶奶": "厌战",
+	"6194": "路易九世",
+	"蕾姆":"电",
+	"拉姆":"雷",
+	"老罗": "罗德尼",
+	"妹控": "波特兰",
+	"萝莉控": "皇家方舟",
+	"南胖": "南达科他",
+	"欧派塔": "威奇塔",
+	"poi": "夕立",
+	"平胸怪": "萨拉托加",
+	"780": "齐柏林伯爵",
+	"三爷": "三笠",
+	"傻白": "伊丽莎白",
+	"太太": "列克星敦",
+	"塔爹": "威奇塔",
+	"500": "五十铃",
+	"Z404": "Z23",
+	"跌丝袜": "吹雪",
+	"赵四": "尼古拉斯",
+	"狗头": "哈曼"
 }
 @on_group_message
 def ship(msg, bot):
@@ -149,10 +194,10 @@ def exctrace_ship(ship=None):
 	ship_attr_antisubmarine = extract_first_match(SHIP_ATTR_ANTISUBMARINE_SELECTOR, soup)
 	ship_attr_ammr = extract_first_match(SHIP_ATTR_AMMR_SELECTOR, soup)
 	ship_attr_reload = extract_first_match(SHIP_ATTR_RELOAD_SELECTOR, soup)
-	ship_attr_lighting = extract_first_match(SHIP_ATTR_RELOAD_SELECTOR, soup)
-	ship_attr_motor = extract_first_match(SHIP_ATTR_RELOAD_SELECTOR, soup)
-	ship_attr_aviation = extract_first_match(SHIP_ATTR_RELOAD_SELECTOR, soup)
-	ship_attr_oil = extract_first_match(SHIP_ATTR_RELOAD_SELECTOR, soup)
+	ship_attr_lighting = extract_first_match(SHIP_ATTR_LIGHTNING_SELECTOR, soup)
+	ship_attr_motor = extract_first_match(SHIP_ATTR_MOTOR_SELECTOR, soup)
+	ship_attr_aviation = extract_first_match(SHIP_ATTR_AVIATION_SELECTOR, soup)
+	ship_attr_oil = extract_first_match(SHIP_ATTR_OIL_SELECTOR, soup)
 	ship_attr_speed = extract_first_match(SHIP_ATTR_SPEED_SELECTOR, soup)
 	ship_equip = extract_all_with_splitor(SHIP_EQUIPMENT_SELECTOR, soup)
 
@@ -192,6 +237,7 @@ def extract_first_match(selector, soup, attr=None):
 			else:
 				return match_elements[0][attr]
 	return ''
+
 
 def extract_all_with_splitor(selector, soup, splitor=",", attr=None):
 	if selector and soup:
