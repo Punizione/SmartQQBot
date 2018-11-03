@@ -160,7 +160,7 @@ def exctrace_ship(ship=None):
 	url = "http://wiki.joyme.com/blhx/{ship}".format(
 		ship=ship
 	)
-	reply_str = "船名:{ship_name}"+ \
+	reply_str = "船名:{ship_name}\n"+ \
 		"类型:{ship_type}"+ \
 		"稀有度:{ship_level}"+ \
 		"建造时间:{ship_buildtime}"+ \
