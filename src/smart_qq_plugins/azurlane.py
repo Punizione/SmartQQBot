@@ -8,6 +8,10 @@ from smart_qq_bot.logger import logger
 from smart_qq_bot.signals import on_group_message
 from bs4 import BeautifulSoup
 
+#船名
+SHIP_NAME_SELECTOR = "h1#firstHeading"
+
+
 # 类型
 SHIP_TYPE_SELECTOR = "table.wikitable.sv-general > tbody > tr:nth-of-type(3) > td:nth-of-type(2)"
 
@@ -156,7 +160,8 @@ def exctrace_ship(ship=None):
 	url = "http://wiki.joyme.com/blhx/{ship}".format(
 		ship=ship
 	)
-	reply_str = "类型:{ship_type}"+ \
+	reply_str = "船名:{ship_name}"+ \
+		"类型:{ship_type}"+ \
 		"稀有度:{ship_level}"+ \
 		"建造时间:{ship_buildtime}"+ \
 		"普通掉落:{ship_drop_normal}"+ \
@@ -183,6 +188,7 @@ def exctrace_ship(ship=None):
 		return str_data
 	if response.status_code == 404:
 		return "emmm这可能是颗卫星 :("
+	ship_name = extract_first_match(SHIP_NAME_SELECTOR, soup)
 	ship_type = extract_first_match(SHIP_TYPE_SELECTOR, soup)
 	ship_level = extract_first_match(SHIP_LEVEL_SELECTOR, soup)
 	ship_buildtime = extract_first_match(SHIP_BUILDTIME_SELECTOR, soup)
@@ -202,6 +208,7 @@ def exctrace_ship(ship=None):
 	ship_equip = extract_all_with_splitor(SHIP_EQUIPMENT_SELECTOR, soup)
 
 	str_data = reply_str.format(
+		ship_name=ship_name,
 		ship_type=ship_type,
 		ship_level=ship_level,
 		ship_buildtime=ship_buildtime,
